@@ -1,10 +1,21 @@
-import express from "express";
-import router from "./routes/routes.js";
+const express = require("express");
+const router = require("./routes/routes.js");
 
-const app = express();
+class App {
+  constructor() {
+    this.server = express();
 
-app.use(router);
+    this.middlewares();
+    this.routes();
+  }
 
-app.listen(3000, () => {
-  console.log("Server is running on port 3000");
-});
+  middlewares() {
+    this.server.use(express.json());
+  }
+
+  routes() {
+    this.server.use(router);
+  }
+}
+
+module.exports = new App().server;
