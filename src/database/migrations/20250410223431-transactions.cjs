@@ -2,32 +2,36 @@
 
 module.exports = {
   async up(queryInterface, Sequelize) {
-    await queryInterface.createTable("account", {
+    await queryInterface.createTable("transactions", {
       id: {
         type: Sequelize.INTEGER,
         primaryKey: true,
         autoIncrement: true,
       },
-      user_id: {
+      account_id: {
         type: Sequelize.INTEGER,
-        references: { model: "user", key: "id" },
+        references: { model: "accounts", key: "id" },
       },
-      institution_id: {
-        type: Sequelize.INTEGER,
-        references: { model: "institution", key: "id" },
-      },
-      balance: {
+      value: {
         type: Sequelize.DECIMAL,
-        defaultValue: 0.0,
+        allowNull: false,
+      },
+      type: {
+        type: Sequelize.CHAR,
+        allowNull: false,
+      },
+      description: {
+        type: Sequelize.STRING,
+        allowNull: true,
       },
       created_at: {
-        type: Sequelize.DATE,
+        type: Sequelize.TIME,
         defaultValue: Sequelize.literal("CURRENT_TIMESTAMP"),
       },
     });
   },
 
   async down(queryInterface, Sequelize) {
-    await queryInterface.dropTable("account");
+    await queryInterface.dropTable("transactions");
   },
 };
