@@ -1,13 +1,22 @@
-version: "28.0.4"
-
 services:
   postgres:
-    image: bitnami/postgresql:latest
+    image: postgres:17
+    container_name: openfinance-db
+    restart: unless-stopped
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_DB: minibancocentral
     ports:
       - "5432:5432"
-    environment:
-      - POSTGRES_USER=minibanco
-      - POSTGRES_PASSWORD=039435
-      - POSTGRES_DB= postgres
     volumes:
-      - polls_pg_data:/bitnami/postgresql
+      - postgres_data:/var/lib/postgresql/data
+    networks:
+      - openfinance_network
+
+volumes:
+  postgres_data:
+
+networks:
+  openfinance_network:
+    driver: bridge
