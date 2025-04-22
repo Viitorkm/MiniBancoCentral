@@ -46,6 +46,12 @@ Clone o repositório:
 git clone https://github.com/Viitorkm/MiniBancoCentral
 ```
 
+Instalar o npm
+
+```bash
+npm install
+```
+
 Inicie os containers:
 
 ```bash
