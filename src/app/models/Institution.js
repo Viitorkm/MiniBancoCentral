@@ -1,21 +1,17 @@
 import Sequelize, { Model } from "sequelize";
 
-class User extends Model {
+class Institution extends Model {
   static init(sequelize) {
     super.init(
       {
-        cpf: {
-          type: Sequelize.STRING,
-          primaryKey: true,
-        },
         name: Sequelize.STRING,
       },
       {
         sequelize,
-        tableName: "users",
+        tableName: "institutions",
       }
     );
   }
 }
 
-export default User;
+export default Institution;

@@ -2,8 +2,11 @@ import Sequelize from "sequelize";
 import databaseConfig from "../config/database.cjs";
 
 import User from "../app/models/User.js";
+import Institution from "../app/models/Institution.js";
+import Account from "../app/models/Account.js";
+import Transaction from "../app/models/Transaction.js";
 
-const models = [User];
+const models = [User, Institution, Account, Transaction];
 
 class Database {
   constructor() {

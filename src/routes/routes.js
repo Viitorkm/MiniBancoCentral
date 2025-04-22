@@ -1,27 +1,25 @@
-import { Router } from "express";
-import User from "../app/models/User.js";
-const router = Router();
+import express from "express";
+const router = express.Router();
 
-router.get("/hello", async (req, res) => {
-  const user = await User.create({
-    name: "Vitor",
-    cpf: "03943559033",
-  });
-  return res.json(user);
-});
+import UserController from "../app/controllers/UserController.js";
+import InstitutionController from "../app/controllers/InstitutionController.js";
+import AccountController from "../app/controllers/AccountController.js";
+import Transaction from "../app/controllers/TransactionController.js";
+import TransactionController from "../app/controllers/TransactionController.js";
 
-//router.post("/instituicoes"); // Cadastrar instituições financeiras
+router.get("/users/:user_cpf/balance", AccountController.getBalance);
+router.get("/users/:user_cpf/statement", AccountController.getStatement);
+router.get("/listInstitutions", InstitutionController.listInstitutions);
+router.get("/listUsers", UserController.listUsers);
 
-//router.post("/usuarios/:id/contas"); // Cadastrar contas para usuários em instituições diferentes
-
-//router.post("/usuarios/:id/transacoes"); //Realizar lançamentos (transações) nas contas
-
-//router.get("/usuarios/:id/saldo"); // Obter saldo total do usuário
-
-//router.get("/usuarios/:id/saldo?instituicao=instituicao"); //Obter saldo por instituição
-
-//router.get("/usuarios/:id/extrato"); //Obter extrato completo do usuário
-
-//router.get("/usuarios/:id/extrato?instituicao=BB"); //Filtrar extrato por instituição
+router.post("/newuser", UserController.createUser);
+router.post("/newInstitution", InstitutionController.store);
+router.post("/users/:user_cpf/accounts", AccountController.createAccount);
+router.post(
+  "/users/:origin_cpf/transaction",
+  TransactionController.newTransaction
+);
+router.post("/users/:user_cpf/deposit", AccountController.newDeposit);
+router.post("/users/:user_cpf/withdrawal", AccountController.newWithdrawal);
 
 export default router;
