@@ -18,6 +18,7 @@ Esta API desenvolvida em Node.js simula um sistema bancário centralizado, permi
 
 ## 📂 Estrutura do Projeto
 
+```bash
 src/
 ├── app/
 │ ├── controllers/ # Lógica de negócios
@@ -28,6 +29,7 @@ src/
 │ └── services/ # Serviços auxiliares
 ├── server.js # Ponto de entrada
 └── app.js # Configuração principal
+```
 
 ## 🚀 Como Executar
 
