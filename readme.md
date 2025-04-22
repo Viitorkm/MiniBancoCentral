@@ -84,8 +84,7 @@ A API estará disponível em http://localhost:3000
   ```json
   {
     "cpf": "string",
-    "name": "string",
-    "email": "string"
+    "name": "string"
   }
   ```
 - **Resposta**: `"Usuario Criado"` ou `"O Usuario Já Existe"`
