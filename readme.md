@@ -44,7 +44,7 @@ Clone o repositório:
 
 ```bash
 git clone https://github.com/Viitorkm/MiniBancoCentral
-cd API-MiniBancoCentral
+cd MiniBancoCentral
 ```
 
 Instalar o npm
